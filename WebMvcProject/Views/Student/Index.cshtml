@@ -1,0 +1,51 @@
+﻿@using WebMvcProject.Data;
+
+
+
+@model List<Student>
+<h2>Öğrenci Bilgi</h2>
+
+<div class="container">
+    <div class="mt-2 text-end">
+        <a asp-controller="Student" asp-action="Create" class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            Yeni Kayıt
+        </a>
+    </div>
+    <table class="table table-bordered mt-3">
+        <thead>
+
+            <tr>
+                <th class="bg-black text-white">
+                    Ad 
+                </th>
+                <th class="bg-black text-white">
+                    Soyad
+                </th>
+                <th class="bg-black text-white">
+                    Telefon Numarası
+                </th>
+
+                <th class="bg-black text-white">
+                    İşlemler
+                </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name </td>
+                    <td>@item.Surname.ToUpper()</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>
+                    <a asp-controller="Student" asp-action="Update" asp-route-id="@item.Id" class="btn btn-secondary">Düzenle</a>
+                   <a asp-controller="Student" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

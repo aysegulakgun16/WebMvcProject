@@ -1,0 +1,37 @@
+﻿@using WebMvcProject.Data;
+
+
+@model Course
+<h1>Kurs Ekle</h1>
+
+<form class="container" method="post" asp-controller="Course" asp-action="Create">
+  <div class="mb-3">
+    <label class="form-label">Kurs İsmi</label>
+    <input  asp-for="Name" type="text" class="form-control"/>
+  </div>
+
+   <div class="mb-3">
+    <label class="form-label">Kurs İçeriği</label>
+    <input  asp-for="Content" type="text" class="form-control"/>
+  </div>
+
+  
+   <div class="mb-3">
+    <label class="form-label">Fiyat</label>
+    <input  asp-for="Price" type="text" class="form-control"/>
+  </div>
+
+     <div class="mb-3">
+    <label class="form-label">Başlangıç Tarihi</label>
+    <input  asp-for="StartDate" type="text" class="form-control"/>
+  </div>
+
+   <div class="mb-3">
+    <label class="form-label">Bitiş Tarihi</label>
+    <input  asp-for="EndDate" type="text" class="form-control"/>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

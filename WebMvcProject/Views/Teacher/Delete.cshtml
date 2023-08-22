@@ -1,0 +1,24 @@
+﻿@using WebMvcProject.Data;
+
+
+@model Teacher
+<h2>Öğrentemen Sil</h2>
+
+<div class="container">
+    <div class="card mt-2">
+        <div class="card-header bg-primary text-white">
+            <h3>Kayıt Silme İşlemi</h3>
+        </div>
+        <div class="card-body">
+            @Model.Name @Model.Surname.ToUpper() Kaydını Silmek İstediğinize Emin misiniz?
+        </div>
+        <div class="card-footer">
+            <form method="post" asp-controller="Teacher" asp-action="Delete">
+                <input asp-for="Id" type="hidden" />
+                <button class="btn btn-success" type="submit">Sil</button>
+                <a asp-controller="Teacher" asp-action="Index" class="btn btn-primary">Vazgeç</a>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+@model RegisterModel
+
+<style>
+    .form-signing{
+        width:100%;
+        max-width:330px;
+        padding:15px;
+        margin:auto;
+
+    }
+</style>
+
+<div id="msg" data-status="@(ViewBag.Message is not null ? "Completed":"NotCompleted")">@(ViewBag.Message is not null ? "Giriş Ekranına Yönlendiriliyorsunuz...": "")</div>
+
+@if (ViewBag.Message is not null )
+
+{
+<div class="alert alert-success">@ViewBag.Message</div>    
+}
+
+<main class="form-signing">
+
+    <form method="post" asp-controller="Account" asp-action="Register">
+        <div class="form-floating">
+            <input type="text" asp-for="UserName" class="form-control" id="floatingUsername" placeholder="Kullanıcı Adı Giriniz" />
+            <label for="floatingUsername">Kullanıcı Adı:</label>
+            <span asp-validation-for="UserName"></span>
+        </div>
+
+         <div class="form-floating mt-2">
+            <input type="email" asp-for="Email" class="form-control" id="floatingEmail" placeholder="Kullanıcı E-Mail Giriniz" />
+            <label for="floatingEmail ">Kullanıcı E-Posta:</label>
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-floating mt-2">
+            <input type="password" asp-for="Password" class="form-control" id="floatingPassword" placeholder="Kullanıcı Parola Giriniz" />
+            <label for="floatingPassword ">Kullanıcı Parola:</label>
+            <span asp-validation-for="Password"></span>
+        </div>
+
+        <div class="form-floating mt-2">
+            <input type="password" asp-for="PasswordAgain" class="form-control" id="floatingPasswordAgain" placeholder="Kullanıcı Parola Tekrar Giriniz" />
+            <label for="floatingPasswordAgain ">Kullanıcı Parola Tekrar:</label>
+            <span asp-validation-for="PasswordAgain"></span>
+        </div>
+
+
+        <button class="w-100 btn btn-primary btn btn-lg mt-4" type="submit">Kayıt Ol</button>
+
+        <p class="mt-5 mb-3">&copy;</p>
+
+    </form>
+
+</main>
+
+@section Scripts{
+
+    <script>
+
+        var msg = document.getElementById("msg");
+
+        if(msg.getAttribute("data-status") == "Completed"){
+            setTimeout(() => {
+                window.location.href = "/Account/Login";
+            },3000)
+        }
+
+    </script>
+
+
+}

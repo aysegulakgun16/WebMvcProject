@@ -1,0 +1,17 @@
+﻿
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hoş Geldiniz @User?.Identity?.Name</p>
+}
+
+@if(User.IsInRole("Admin"))
+{
+    <p>Sadece Admin Görebilir</p>
+}
+
+@if(User.IsInRole("Manager"))
+{
+    <p>Sadece Manager Görebilir</p>
+}
